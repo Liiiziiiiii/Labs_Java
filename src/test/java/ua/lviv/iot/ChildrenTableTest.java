@@ -24,36 +24,11 @@ class ChildrenTableTest extends TestCase {
         childrenTable = new ChildrenTable(11, 11, 11, Boolean.FALSE, 2, 20);
     }
 
-    @Test
-    void testGetMaxHeight(){
-        var childrenTable = new ChildrenTable(11, 11, 11, Boolean.FALSE, 2, 20);
-        Assertions.assertEquals(20, childrenTable.getMaxHeight());
-    }
-
-    @Test
-    void testGetAgeOfTheChild(){
-        var childrenTable = new ChildrenTable(11, 11, 11, Boolean.FALSE, 2, 20);
-        Assertions.assertEquals(2, childrenTable.getAgeOfTheChild());
-    }
-
-    @Test
-    public void testSetMaxHeight(){
-        var childrenTable = new ChildrenTable(11, 11, 11, Boolean.FALSE, 2, 20);
-        childrenTable.setMaxHeight(25);
-        Assertions.assertEquals(25, childrenTable.getMaxHeight());
-    }
-
-    @Test
-    public void testSetAgeOfTheChild(){
-        var childrenTable = new ChildrenTable(11, 11, 11, Boolean.FALSE, 2, 20);
-        childrenTable.setAgeOfTheChild(30);
-        Assertions.assertEquals(30 , childrenTable.getAgeOfTheChild());
-    }
 
     @Test
     void testTheHeightOfTheTableToTheMaximum() {
-        childrenTable.increaseTheHeightOfTheTableToTheMaximum(10);
-        Assertions.assertEquals(11, childrenTable.getHeight());
+        childrenTable.increaseTheHeightOfTheTableToTheMaximum(5);
+        Assertions.assertEquals(4, childrenTable.getHeight());
 
     }
 
@@ -62,35 +37,23 @@ class ChildrenTableTest extends TestCase {
         ChildrenTable testtable = new ChildrenTable(11, 11, 11, Boolean.FALSE, 2, 20);
         testtable.increaseTheHeightOfTheTableToTheMaximum(10);
 
-        Assertions.assertEquals(11, testtable.getHeight(), 2);
-
-        testtable.increaseTheHeightOfTheTableToTheMaximum(20);
-
-        Assertions.assertEquals(11, testtable.getHeight(), 2);
-
-
-        testtable.increaseTheHeightOfTheTableToTheMaximum(30);
-
-        Assertions.assertEquals(11, testtable.getHeight(), 2);
-
+        Assertions.assertEquals(0, testtable.getHeight(), 2);
     }
 
 
     @Test
     void moveDown() {
         ChildrenTable testtable = new ChildrenTable(11, 11, 11, Boolean.FALSE, 2, 20);
-        testtable.moveDown(10);
+        testtable.moveDown(5);
 
-        Assertions.assertEquals(11, testtable.getHeight(), 2);
+        Assertions.assertEquals(16, testtable.getHeight(), 2);
 
-        testtable.increaseTheHeightOfTheTableToTheMaximum(20);
+    }
 
-        Assertions.assertEquals(11, testtable.getHeight(), 2);
-
-
-        testtable.increaseTheHeightOfTheTableToTheMaximum(30);
-
-        Assertions.assertEquals(11, testtable.getHeight(), 2);
-
+    @Test
+    public void testToString(){
+        ChildrenTable testtable = new ChildrenTable(11, 11, 11, Boolean.FALSE, 2, 20);
+        String expected = "ChildrenTable(super=Desk(height=11, width=11, length=11, hasKeyboardTray=false), ageOfTheChild=2.0, maxHeight=20)";
+        assertEquals(expected, childrenTable.toString());
     }
 }

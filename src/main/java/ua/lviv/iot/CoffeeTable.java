@@ -1,18 +1,21 @@
 package ua.lviv.iot;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 
 @Setter
 @Getter
-@ToString (callSuper = true)
+@ToString(callSuper = true)
 public class CoffeeTable extends Desk {
     private int numberOfGuests;
     private int numberOfShelves;
     private int miniHeight;
     private int maxHeight;
 
-
-    public CoffeeTable(int height, int width, int length, boolean hasKeyboardTray, int numberOfGuests, int numberOfShelves, int miniHeight, int maxHeight) {
+    public CoffeeTable(final int height, final int width, final int length, final boolean hasKeyboardTray, final int numberOfGuests, final int numberOfShelves, final int miniHeight, final int maxHeight) {
         super(height, width, length, hasKeyboardTray);
         this.numberOfGuests = numberOfGuests;
         this.numberOfShelves = numberOfShelves;
@@ -21,25 +24,22 @@ public class CoffeeTable extends Desk {
     }
 
 
-
-
     @Override
-    public int increaseTheHeightOfTheTableToTheMaximum(int centimeters) {
+    public void increaseTheHeightOfTheTableToTheMaximum(final int centimeters) {
         if ((getHeight() + centimeters) < maxHeight) {
-            System.out.println("You can increase in by " + Math.abs((getHeight() + centimeters) - maxHeight) + " CoffeeTable");
+            setHeight(Math.abs((getHeight() + centimeters) - maxHeight));
         } else {
-            System.out.println("You can not increase CoffeeTable");
+            setHeight(0);
         }
-        return 0;
     }
 
     @Override
-    public short moveDown(int centimeters) {
-        if (getHeight() + centimeters > 0) {
-            System.out.println("You can reduce in by " + (getHeight() + centimeters) + "CoffeeTable");
+    public void moveDown(final int centimeters) {
+        if ((getHeight() + centimeters) < maxHeight) {
+            setHeight(getHeight() + centimeters);
         } else {
-            System.out.println("You can not reduce CoffeeTable");
+            setHeight(0);
         }
-        return 0;
+
     }
 }

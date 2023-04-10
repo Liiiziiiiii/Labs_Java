@@ -10,7 +10,7 @@ public class DeskManager {
         return desks;
     }
 
-    public List<Desk> findAllWithHeightGreaterThan(int height) {
+    public List<Desk> findAllWithHeightGreaterThan(final int height) {
         return desks.stream()
                 .filter(desk -> desk.getHeight() > height)
                 .collect(Collectors.toList());

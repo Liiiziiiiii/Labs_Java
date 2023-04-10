@@ -1,40 +1,39 @@
 package ua.lviv.iot;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Setter
 @Getter
-@ToString (callSuper = true)
+@ToString(callSuper = true)
 public class ChildrenTable extends Desk {
     private float ageOfTheChild;
     private int maxHeight;
 
-
-    public ChildrenTable (int height, int width, int length, boolean hasKeyboardTray, float ageOfTheChild, int maxHeight) {
+    public ChildrenTable(final int height, final int width, final int length, final boolean hasKeyboardTray, final float ageOfTheChild, final int maxHeight) {
         super(height, width, length, hasKeyboardTray);
         this.ageOfTheChild = ageOfTheChild;
         this.maxHeight = maxHeight;
     }
 
     @Override
-    public int increaseTheHeightOfTheTableToTheMaximum(int centimeters) {
+    public void increaseTheHeightOfTheTableToTheMaximum(final int centimeters) {
         if ((getHeight() + centimeters) < maxHeight) {
-            System.out.println("You can increase in by " + Math.abs((getHeight() + centimeters) - maxHeight) + " ChildrenTable");
+            setHeight(Math.abs((getHeight() + centimeters) - maxHeight));
         } else {
-            System.out.println("You can not increase ChildrenTable");
+            setHeight(0);
         }
-        return centimeters;
     }
 
     @Override
-    public short moveDown (int centimeters) {
+    public void moveDown(final int centimeters) {
         if (getHeight() + centimeters > 0) {
-            System.out.println("You can reduce in by " + (getHeight() + centimeters) + "ChildrenTable");
+            setHeight(getHeight() + centimeters);
         } else {
-            System.out.println("You can not reduce ChildrenTable");
+            setHeight(0);
         }
-
-        return 0;
     }
 
 }
