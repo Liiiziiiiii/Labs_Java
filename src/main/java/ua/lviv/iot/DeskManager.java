@@ -22,7 +22,7 @@ public class DeskManager {
                 .collect(Collectors.toList());
     }
 
-    private List<Desk> desks = new LinkedList<>();
+    final private List<Desk> desks = new LinkedList<>();
 
     void addDesk(Desk deskList) {
         this.desks.add(deskList);

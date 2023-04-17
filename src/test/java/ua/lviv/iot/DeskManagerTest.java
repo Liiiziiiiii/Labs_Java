@@ -7,8 +7,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertTrue;
-
 
 class DeskManagerTest {
 
@@ -17,13 +15,13 @@ class DeskManagerTest {
     @BeforeEach
     public void setUp() {
         deskManager = new DeskManager();
-        deskManager.addDesk(new CoffeeTable(0, 9, 0, Boolean.FALSE,
+        deskManager.addDesk(new CoffeeTable("CoffeeTable", 10, 9, 0, false,
                 4, 5, 0, 0));
-        deskManager.addDesk( new ChildrenTable(11, 8, 10, Boolean.FALSE,
+        deskManager.addDesk(new ChildrenTable("ChildrenTable", 11, 8, 10, false,
                 2, 20));
-        deskManager.addDesk( new DiningTable(9, 3, 5, Boolean.FALSE,
+        deskManager.addDesk(new DiningTable("DiningTable", 9, 3, 5, false,
                 4, 20));
-        deskManager.addDesk( new WritingDesk(11, 3, 10, Boolean.TRUE,
+        deskManager.addDesk(new WritingDesk("WritingDesk", 11, 3, 10, true,
                 5, 20));
     }
 
@@ -41,7 +39,7 @@ class DeskManagerTest {
         List<Desk> filterList = deskManager.findWithKeyboardTray();
         Assertions.assertEquals(1, filterList.size());
         for (var desk : filterList) {
-            Assertions.assertTrue(desk.hasKeyboardTray());
+            Assertions.assertTrue(desk.isHasKeyboardTray());
         }
     }
 }

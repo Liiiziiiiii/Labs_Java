@@ -21,7 +21,7 @@ class ChildrenTableTest extends TestCase {
     @BeforeEach
     public void setUp() {
 
-        childrenTable = new ChildrenTable(11, 11, 11, Boolean.FALSE, 2, 20);
+        childrenTable = new ChildrenTable("ChildrenTable",11, 11, 11, false, 2, 20);
     }
 
 
@@ -34,7 +34,7 @@ class ChildrenTableTest extends TestCase {
 
     @Test
     void testincreaseTheHeightOfTheTableToTheMaximum() {
-        ChildrenTable testtable = new ChildrenTable(11, 11, 11, Boolean.FALSE, 2, 20);
+        ChildrenTable testtable = new ChildrenTable("ChildrenTable", 11, 11, 11, false, 2, 20);
         testtable.increaseTheHeightOfTheTableToTheMaximum(10);
 
         Assertions.assertEquals(0, testtable.getHeight(), 2);
@@ -43,17 +43,29 @@ class ChildrenTableTest extends TestCase {
 
     @Test
     void moveDown() {
-        ChildrenTable testtable = new ChildrenTable(11, 11, 11, Boolean.FALSE, 2, 20);
+        ChildrenTable testtable = new ChildrenTable("ChildrenTable",11, 11, 11, false, 2, 20);
         testtable.moveDown(5);
 
-        Assertions.assertEquals(16, testtable.getHeight(), 2);
+        Assertions.assertEquals(16, testtable.getHeight());
 
     }
 
     @Test
     public void testToString(){
-        ChildrenTable testtable = new ChildrenTable(11, 11, 11, Boolean.FALSE, 2, 20);
+        ChildrenTable testtable = new ChildrenTable("ChildrenTable",11, 11, 11, false, 2, 20);
         String expected = "ChildrenTable(super=Desk(height=11, width=11, length=11, hasKeyboardTray=false), ageOfTheChild=2.0, maxHeight=20)";
         assertEquals(expected, childrenTable.toString());
+    }
+
+    @Test
+    public void testGetHeader(){
+        String expected = "name, height, width, length, hasKeyboardTray,ageOfTheChild,maxHeight";
+        assertEquals(expected, childrenTable.getHeaders());
+    }
+
+    @Test
+    public void testToCSV(){
+        String expected = childrenTable.getName() + "," + childrenTable.getHeight() + "," + childrenTable.getWidth() + "," + childrenTable.getLength() + "," +childrenTable.isHasKeyboardTray() + "," + childrenTable.getAgeOfTheChild() + "," + childrenTable.getMaxHeight();
+        assertEquals(expected, childrenTable.toCSV());
     }
 }

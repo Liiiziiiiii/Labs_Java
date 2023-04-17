@@ -13,7 +13,7 @@ class CoffeeTableTest extends TestCase {
     @BeforeEach
     public void setUp() {
 
-        coffeeTable = new CoffeeTable(11, 11, 11, Boolean.FALSE, 2, 20, 8, 20);
+        coffeeTable = new CoffeeTable("CoffeeTable", 11, 11, 11, Boolean.FALSE, 2, 20, 8, 20);
     }
 
     @Test
@@ -23,14 +23,14 @@ class CoffeeTableTest extends TestCase {
     }
 
     @Test
-    void testTheHeightOfTheTableToTheMin(){
+    void testTheHeightOfTheTableToTheMin() {
         coffeeTable.moveDown(5);
         Assertions.assertEquals(16, coffeeTable.getHeight());
     }
 
     @Test
     void increaseTheHeightOfTheTableToTheMaximum() {
-        CoffeeTable testtable = new CoffeeTable(11, 11, 11, Boolean.FALSE, 2, 20, 9 ,30);
+        CoffeeTable testtable = new CoffeeTable("CoffeeTable", 11, 11, 11, false, 2, 20, 9, 30);
         testtable.increaseTheHeightOfTheTableToTheMaximum(5);
 
         Assertions.assertEquals(14, testtable.getHeight());
@@ -38,16 +38,28 @@ class CoffeeTableTest extends TestCase {
 
     @Test
     void moveDown() {
-        CoffeeTable testtable = new CoffeeTable(11, 11, 11, Boolean.FALSE, 2, 20, 9 ,30);
+        CoffeeTable testtable = new CoffeeTable("CoffeeTable", 11, 11, 11, false, 2, 20, 9, 30);
         testtable.moveDown(5);
 
         Assertions.assertEquals(16, testtable.getHeight());
     }
 
     @Test
-    public void testToString(){
-        CoffeeTable testtable = new CoffeeTable(11, 11, 11, Boolean.FALSE, 2, 20, 9 ,20);
+    public void testToString() {
+        CoffeeTable testtable = new CoffeeTable("CoffeeTable", 11, 11, 11, false, 2, 20, 9, 20);
         String expected = "CoffeeTable(super=Desk(height=11, width=11, length=11, hasKeyboardTray=false), numberOfGuests=2, numberOfShelves=20, miniHeight=8, maxHeight=20)";
         assertEquals(expected, coffeeTable.toString());
+    }
+
+    @Test
+    public void testGetHeader() {
+        String expected = "name, height, width, length, hasKeyboardTray, numberOfShelves, numberOfGuests, miniHeight, maxHeight";
+        assertEquals(expected, coffeeTable.getHeaders());
+    }
+
+    @Test
+    public void testToCSV() {
+        String expected = coffeeTable.getName() + "," + coffeeTable.getHeight() + "," + coffeeTable.getWidth() + "," + coffeeTable.getLength() + "," + coffeeTable.isHasKeyboardTray() + "," + coffeeTable.getNumberOfShelves() + "," +coffeeTable.getNumberOfGuests()  + "," + coffeeTable.getMiniHeight() + "," + coffeeTable.getMaxHeight();
+        assertEquals(expected, coffeeTable.toCSV());
     }
 }

@@ -9,8 +9,8 @@ public class DiningTable extends Desk {
     private int numberOfSeats;
     private int maxHeight;
 
-    public DiningTable(final int height, final int width, final int length, final boolean hasKeyboardTray, final int numberOfSeats, final int maxHeight) {
-        super(height, width, length, hasKeyboardTray);
+    public DiningTable(final String name, final int height, final int width, final int length, final boolean hasKeyboardTray, final int numberOfSeats, final int maxHeight) {
+        super(name, height, width, length, hasKeyboardTray);
         this.numberOfSeats = numberOfSeats;
         this.maxHeight = maxHeight;
     }
@@ -34,7 +34,14 @@ public class DiningTable extends Desk {
         } else {
             setHeight(0);
         }
+    }
 
+    public String getHeaders(){
+        return HEADER + ","+ " numberOfSeats" + "," + " maxHeight";
 
+    }
+
+    public String toCSV() {
+        return super.toCSV() + "," + numberOfSeats + "," + maxHeight;
     }
 }

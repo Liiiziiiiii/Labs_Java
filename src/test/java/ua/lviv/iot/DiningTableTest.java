@@ -13,20 +13,20 @@ class DiningTableTest extends TestCase {
 
     @BeforeEach
     public void setUp() {
-        DiningTable diningTable = new DiningTable(10, 10, 10, Boolean.FALSE, 10,20);
+        diningTable = new DiningTable("DiningTable",10, 10, 10, false, 10,20);
     }
 
 
     @Test
     void increaseTheHeightOfTheTableToTheMaximum() {
-        DiningTable diningTable = new DiningTable(15, 10, 10, Boolean.FALSE, 10,20);
+        DiningTable diningTable = new DiningTable("DiningTable",15, 10, 10, false, 10,20);
         diningTable.increaseTheHeightOfTheTableToTheMaximum(5);
         Assertions.assertEquals(0, diningTable.getHeight(), 2);
     }
 
     @Test
     void moveDown() {
-        DiningTable diningTable = new DiningTable(13, 10, 10, Boolean.FALSE, 10,20);
+        DiningTable diningTable = new DiningTable("DiningTable",13, 10, 10, false, 10,20);
         diningTable.moveDown(5);
         Assertions.assertEquals(18, diningTable.getHeight(), 2);
 
@@ -34,9 +34,22 @@ class DiningTableTest extends TestCase {
 
     @Test
     public void testToString(){
-        DiningTable diningTable = new DiningTable(13, 10, 10, Boolean.FALSE, 10,20);
+        DiningTable diningTable = new DiningTable("DiningTable",13, 10, 10, false, 10,20);
         String expected = "DiningTable(super=Desk(height=13, width=10, length=10, hasKeyboardTray=false), numberOfSeats=10, maxHeight=20)";
         assertEquals(expected, diningTable.toString() );
+    }
+
+
+    @Test
+    public void testGetHeader(){
+        String expected = "name, height, width, length, hasKeyboardTray, numberOfSeats, maxHeight";
+        assertEquals(expected, diningTable.getHeaders());
+    }
+
+    @Test
+    public void testToCSV(){
+        String expected = diningTable.getName() + "," + diningTable.getHeight() + "," + diningTable.getWidth() + "," + diningTable.getLength() + "," + diningTable.isHasKeyboardTray() + "," + diningTable.getNumberOfSeats() + "," + diningTable.getMaxHeight();
+        assertEquals(expected, diningTable.toCSV());
     }
 
 

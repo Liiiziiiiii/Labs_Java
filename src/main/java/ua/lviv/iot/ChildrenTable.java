@@ -1,7 +1,6 @@
 package ua.lviv.iot;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -12,8 +11,8 @@ public class ChildrenTable extends Desk {
     private float ageOfTheChild;
     private int maxHeight;
 
-    public ChildrenTable(final int height, final int width, final int length, final boolean hasKeyboardTray, final float ageOfTheChild, final int maxHeight) {
-        super(height, width, length, hasKeyboardTray);
+    public ChildrenTable(final String name, final int height, final int width, final int length, final boolean hasKeyboardTray, final float ageOfTheChild, final int maxHeight) {
+        super(name, height, width, length, hasKeyboardTray);
         this.ageOfTheChild = ageOfTheChild;
         this.maxHeight = maxHeight;
     }
@@ -36,4 +35,11 @@ public class ChildrenTable extends Desk {
         }
     }
 
+    public String getHeaders() {
+        return HEADER + "," + "ageOfTheChild" + "," + "maxHeight";
+    }
+
+    public String toCSV() {
+        return super.toCSV() + "," + ageOfTheChild + "," + maxHeight;
+    }
 }
