@@ -24,7 +24,7 @@ public class DeskManager {
 
     final private List<Desk> desks = new LinkedList<>();
 
-    void addDesk(Desk deskList) {
+    public void addDesk(Desk deskList) {
         this.desks.add(deskList);
     }
 

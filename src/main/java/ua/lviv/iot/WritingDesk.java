@@ -36,12 +36,12 @@ public class WritingDesk extends Desk {
     }
 
     public String getHeaders(){
-        return HEADER + ", miniHeight" + ", maxHeight";
+        return HEADER + ", miniHeight" + ", maxHeight \n";
 
     }
 
     public String toCSV() {
-        return super.toCSV() + "," + miniHeight + "," + maxHeight;
+        return super.toCSV() + "," + miniHeight + "," + maxHeight + "\n";
     }
 
 

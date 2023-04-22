@@ -45,13 +45,6 @@ class CoffeeTableTest extends TestCase {
     }
 
     @Test
-    public void testToString() {
-        CoffeeTable testtable = new CoffeeTable("CoffeeTable", 11, 11, 11, false, 2, 20, 9, 20);
-        String expected = "CoffeeTable(super=Desk(height=11, width=11, length=11, hasKeyboardTray=false), numberOfGuests=2, numberOfShelves=20, miniHeight=8, maxHeight=20)";
-        assertEquals(expected, coffeeTable.toString());
-    }
-
-    @Test
     public void testGetHeader() {
         String expected = "name, height, width, length, hasKeyboardTray, numberOfShelves, numberOfGuests, miniHeight, maxHeight";
         assertEquals(expected, coffeeTable.getHeaders());

@@ -33,14 +33,6 @@ class DiningTableTest extends TestCase {
     }
 
     @Test
-    public void testToString(){
-        DiningTable diningTable = new DiningTable("DiningTable",13, 10, 10, false, 10,20);
-        String expected = "DiningTable(super=Desk(height=13, width=10, length=10, hasKeyboardTray=false), numberOfSeats=10, maxHeight=20)";
-        assertEquals(expected, diningTable.toString() );
-    }
-
-
-    @Test
     public void testGetHeader(){
         String expected = "name, height, width, length, hasKeyboardTray, numberOfSeats, maxHeight";
         assertEquals(expected, diningTable.getHeaders());

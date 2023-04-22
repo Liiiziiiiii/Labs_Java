@@ -1,16 +1,12 @@
 package ua.lviv.iot;
 
 import junit.framework.TestCase;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.junit.Assert;
 import org.junit.Rule;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.rules.TemporaryFolder;
-
+import ua.lviv.iot.*;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -18,18 +14,12 @@ import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-
 class DeskWriterTest extends TestCase {
+
     private DeskWriter writer = new DeskWriter();
     private static final String EXPECTED = "EXPECTED.CSV";
     private static final String ACTUAL = "ACTUAL.CSV";
-    List<Desk> deskList = new LinkedList<>();
-
-
-    @Rule
-    public TemporaryFolder folder = new TemporaryFolder();
+    List<Desk> desks = new LinkedList<>();
 
 
     private DeskManager deskManager;
@@ -37,30 +27,34 @@ class DeskWriterTest extends TestCase {
 
     @BeforeEach
     public void setUp() throws IOException {
-        deskManager = new DeskManager();
-        deskManager.addDesk(new CoffeeTable("CoffeeTable", 10, 9, 0, false,
-                4, 5, 0, 0));
+
+        DeskManager deskManager = new DeskManager();
+        deskManager.addDesk(new CoffeeTable("CoffeeTable", 10, 9, 10, false,
+                4, 5, 5, 20));
         deskManager.addDesk(new ChildrenTable("ChildrenTable", 11, 8, 10, false,
                 2, 20));
         deskManager.addDesk(new DiningTable("DiningTable", 9, 3, 5, false,
                 4, 20));
         deskManager.addDesk(new WritingDesk("WritingDesk", 11, 3, 10, true,
                 5, 20));
+
+        deskManager.addDesk(new CoffeeTable("CoffeeTable", 15, 15, 15, false, 5, 15, 5, 30));
+
+        deskManager.addDesk(new ChildrenTable("ChildrenTable", 15, 15, 15, false, 1, 25));
+
+        deskManager.addDesk(new DiningTable("DiningTable", 15, 15, 15, false, 8, 25));
+
+        deskManager.addDesk(new WritingDesk("WritingDesk", 17, 17, 17, true, 5, 25));
+
         writer = new DeskWriter();
-//        Files.delete(Path.of(RESULT)) ;
+//        desks.addAll(deskManager.getDesk);
     }
 
-//    @AfterEach
-//    public void tearDown() throws IOException{
-//        Files.deleteIfExists(Path.of(RESULT));
-//    }
-
-    //
     @Test
     public void testFileEmpty() throws IOException {
         try {
             FileWriter writer = new FileWriter(EXPECTED);
-            writer.write(deskList.toString());
+            writer.write(desks.toString());
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -72,8 +66,8 @@ class DeskWriterTest extends TestCase {
 
 
     @Test
-    public void testEmptytWrite() throws IOException {
-        writer.writeToFile(deskList);
+    public void testEmptyWrite() throws IOException {
+        writer.writeToFile(desks);
         File file = new File(EXPECTED);
         Assertions.assertTrue(file.exists());
 
@@ -81,8 +75,8 @@ class DeskWriterTest extends TestCase {
 
     @Test
     public void testWriteListOfDesk() throws IOException {
-        writer.writeToFile(deskList);
-        File file = new File(EXPECTED);
+        writer.writeToFile(desks);
+        File file = new File(ACTUAL);
 
         Path expected = new File(EXPECTED).toPath();
         Path actual = new File(ACTUAL).toPath();
@@ -91,8 +85,16 @@ class DeskWriterTest extends TestCase {
     }
 
     @Test
+    public void testCollect() throws IOException{
+        String fileName = writer.writeToFile(desks);
+
+//        String fileContents = Files.readString(Path.of(fileName));
+
+        Assertions.assertEquals(null, fileName);
+    }
+
+    @Test
     public void testFileOverride() throws IOException {
         testWriteListOfDesk();
     }
-
 }

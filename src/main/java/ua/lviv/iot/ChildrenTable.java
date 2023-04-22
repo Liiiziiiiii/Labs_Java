@@ -36,10 +36,10 @@ public class ChildrenTable extends Desk {
     }
 
     public String getHeaders() {
-        return HEADER + "," + "ageOfTheChild" + "," + "maxHeight";
+        return HEADER + ", ageOfTheChild, maxHeight \n";
     }
 
     public String toCSV() {
-        return super.toCSV() + "," + ageOfTheChild + "," + maxHeight;
+        return super.toCSV() + "," + ageOfTheChild + "," + maxHeight + "\n";
     }
 }

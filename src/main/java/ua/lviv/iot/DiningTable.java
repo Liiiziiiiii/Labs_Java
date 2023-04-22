@@ -37,11 +37,11 @@ public class DiningTable extends Desk {
     }
 
     public String getHeaders(){
-        return HEADER + ","+ " numberOfSeats" + "," + " maxHeight";
+        return HEADER + ","+ " numberOfSeats" + "," + " maxHeight \n";
 
     }
 
     public String toCSV() {
-        return super.toCSV() + "," + numberOfSeats + "," + maxHeight;
+        return super.toCSV() + "," + numberOfSeats + "," + maxHeight + "\n";
     }
 }

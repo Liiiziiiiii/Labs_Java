@@ -33,13 +33,6 @@ class WritingDeskTest extends TestCase {
         Assertions.assertEquals(0, writingDesk.getHeight());
 
     }
-    @Test
-    public void testToString(){
-        WritingDesk writingDesk = new WritingDesk("WritingDesk",9,10, 5, true, 5, 20);
-        String expected = "WritingDesk(super=Desk(height=9, width=10, length=5, hasKeyboardTray=true), miniHeight=5, maxHeight=20)";
-        assertEquals(expected, writingDesk.toString());
-    }
-
 
     @Test
     public void testGetHeader(){

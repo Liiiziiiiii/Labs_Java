@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-//import com.opencsv.CSVWriter;
+
 @Setter
 @Getter
 @ToString
@@ -17,7 +17,8 @@ public abstract class Desk {
     protected boolean hasKeyboardTray;
 
 
-    public static final String HEADER = "name, height, width, length, hasKeyboardTray";
+    public static final String HEADER = "\n name, height, width, length, hasKeyboardTray";
+    public final String CSV = name + "," + height + "," + width + "," + length + "," + hasKeyboardTray;
 
     public abstract void increaseTheHeightOfTheTableToTheMaximum(int centimeters);
     public abstract void moveDown (int centimeters);

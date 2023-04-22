@@ -42,11 +42,12 @@ public class CoffeeTable extends Desk {
         }
     }
 
+
     public String getHeaders(){
-        return HEADER + ", numberOfShelves" +", numberOfGuests" + ", miniHeight" + ", maxHeight";
+        return HEADER + ", numberOfShelves" +", numberOfGuests" + ", miniHeight" + ", maxHeight \n";
     }
 
     public String toCSV() {
-        return super.toCSV() + "," + numberOfShelves + "," + numberOfGuests + "," + miniHeight + "," + maxHeight;
+        return super.toCSV() + "," + numberOfShelves + "," + numberOfGuests + "," + miniHeight + "," + maxHeight + "\n";
     }
 }
