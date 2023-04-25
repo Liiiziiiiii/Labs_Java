@@ -10,8 +10,8 @@ public class WritingDesk extends Desk {
     private int maxHeight;
 
 
-    public WritingDesk(final int height, final int width, final int length, final boolean hasKeyboardTray, final int miniHeight, final int maxHeight) {
-        super(height, width, length, hasKeyboardTray);
+    public WritingDesk(final String name, final int height, final int width, final int length, final boolean hasKeyboardTray, final int miniHeight, final int maxHeight) {
+        super(name, height, width, length, hasKeyboardTray);
         this.miniHeight = miniHeight;
         this.maxHeight = maxHeight;
     }
@@ -34,6 +34,16 @@ public class WritingDesk extends Desk {
             setHeight(0);
         }
     }
+
+    public String getHeaders(){
+        return HEADER + ", miniHeight" + ", maxHeight \n";
+
+    }
+
+    public String toCSV() {
+        return super.toCSV() + "," + miniHeight + "," + maxHeight + "\n";
+    }
+
 
 }
 

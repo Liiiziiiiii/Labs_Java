@@ -1,11 +1,10 @@
-package ua.lviv.iot;
+package ua.lviv.iot.modelTest;
 
 import junit.framework.TestCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
+import ua.lviv.iot.models.DiningTable;
 
 class DiningTableTest extends TestCase {
 

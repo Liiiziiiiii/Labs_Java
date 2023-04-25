@@ -1,30 +1,29 @@
-package ua.lviv.iot;
+package ua.lviv.iot.models;
 
 import lombok.*;
 
 @Setter
 @Getter
 @ToString(callSuper = true)
-public class DiningTable extends Desk {
-    private int numberOfSeats;
+public class WritingDesk extends Desk {
+    private int miniHeight;
     private int maxHeight;
 
-    public DiningTable(final String name, final int height, final int width, final int length, final boolean hasKeyboardTray, final int numberOfSeats, final int maxHeight) {
+
+    public WritingDesk(final String name, final int height, final int width, final int length, final boolean hasKeyboardTray, final int miniHeight, final int maxHeight) {
         super(name, height, width, length, hasKeyboardTray);
-        this.numberOfSeats = numberOfSeats;
+        this.miniHeight = miniHeight;
         this.maxHeight = maxHeight;
     }
 
+
     @Override
     public void increaseTheHeightOfTheTableToTheMaximum(final int centimeters) {
-
         if ((getHeight() + centimeters) < maxHeight) {
             setHeight(Math.abs((getHeight() + centimeters) - maxHeight));
         } else {
             setHeight(0);
         }
-
-
     }
 
     @Override
@@ -37,11 +36,14 @@ public class DiningTable extends Desk {
     }
 
     public String getHeaders(){
-        return HEADER + ","+ " numberOfSeats" + "," + " maxHeight \n";
+        return HEADER + ", miniHeight" + ", maxHeight \n";
 
     }
 
     public String toCSV() {
-        return super.toCSV() + "," + numberOfSeats + "," + maxHeight + "\n";
+        return super.toCSV() + "," + miniHeight + "," + maxHeight + "\n";
     }
+
+
 }
+

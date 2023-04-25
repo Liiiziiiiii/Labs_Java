@@ -1,4 +1,4 @@
-package ua.lviv.iot;
+package ua.lviv.iot.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,9 +16,7 @@ public abstract class Desk {
     private int length;
     protected boolean hasKeyboardTray;
 
-
-    public static final String HEADER = "\n name, height, width, length, hasKeyboardTray";
-    public final String CSV = name + "," + height + "," + width + "," + length + "," + hasKeyboardTray;
+    public static final String HEADER = "name, height, width, length, hasKeyboardTray";
 
     public abstract void increaseTheHeightOfTheTableToTheMaximum(int centimeters);
     public abstract void moveDown (int centimeters);

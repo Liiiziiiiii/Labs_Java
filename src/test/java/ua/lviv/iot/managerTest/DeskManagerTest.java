@@ -1,9 +1,11 @@
-package ua.lviv.iot;
+package ua.lviv.iot.managerTest;
 
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ua.lviv.iot.managers.DeskManager;
+import ua.lviv.iot.models.*;
 
 import java.util.List;
 
